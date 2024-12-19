@@ -56,6 +56,9 @@ app.post("/submissions", async (req, res) => {
     }
 
     const newSubmission = new Submission({ games });
+    console.log(games);
+    console.log(req.body);
+    console.log(newSubmission);
     await newSubmission.save();
     res.status(201).json({ message: "Submission saved!" });
   } catch (error) {

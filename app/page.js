@@ -80,7 +80,9 @@ function BasicLineChart() {
 
   useEffect(() => {
     const fetchPlayers = async () => {
-      const response = await fetch("http://localhost:5000/submissions");
+      const response = await fetch(
+        "https://mario-party-leader-board-d4vm.vercel.app/submissions"
+      );
       const data = await response.json();
       setGames(data); // Assuming `players` is your state variable
     };

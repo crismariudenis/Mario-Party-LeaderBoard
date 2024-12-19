@@ -53,13 +53,16 @@ export default function Form() {
     console.log("Form Data:", formData);
 
     // Send the form data to the backend
-    const response = await fetch("http://localhost:5000/submissions", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ games: formData }),
-    });
+    const response = await fetch(
+      "https://mario-party-leader-board-d4vm.vercel.app/submissions",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ games: formData }),
+      }
+    );
 
     if (response.ok) {
       console.log("Submission saved!");

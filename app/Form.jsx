@@ -105,7 +105,7 @@ export default function Form() {
           }}
         >
           <Typography sx={{ color: "black", minWidth: "100px" }}>
-            {item.place}
+            Place {item.place}
           </Typography>
           <Select
             multiple
@@ -147,6 +147,9 @@ export default function Form() {
               </MenuItem>
             ))}
           </Select>
+          <Typography sx={{ color: "black", minWidth: "100px" }}>
+            Bonus:
+          </Typography>
           <OutlinedInput
             type="number"
             placeholder="Bonus Points"

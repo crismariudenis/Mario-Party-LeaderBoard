@@ -155,15 +155,40 @@ function BasicLineChart() {
   }, [games]);
 
   return (
-    <LineChart
-      xAxis={chartData.xAxis.data}
-      yAxis={chartData.series.data}
-      series={chartData.series}
-      width={innerWidth}
-      height={800}
-      //grid lines
-      grid={{ vertical: true, horizontal: true }}
-    />
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        height: "100vh",
+        width: "100vw",
+      }}
+    >
+      <div
+        style={{
+          width: "90vw",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <LineChart
+          xAxis={chartData.xAxis.data}
+          yAxis={chartData.series.data}
+          series={chartData.series}
+          width={innerWidth}
+          height={innerHeight}
+          grid={{ vertical: true, horizontal: true }}
+          slotProps={{
+            legend: {
+              labelStyle: {
+                fontSize: "1.2em",
+              },
+            },
+          }}
+        />
+      </div>
+    </div>
   );
 }
 

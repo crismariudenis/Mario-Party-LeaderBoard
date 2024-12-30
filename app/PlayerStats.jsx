@@ -11,7 +11,6 @@ import {
 
 const PlayerStats = () => {
   const [playerStats, setPlayerStats] = useState([]);
-  console.log(process.env.REACT_APP_SERVER_URL);
   useEffect(() => {
     // Fetch player statistics from the backend
     fetch("http://mario-party-leader-board-d4vm.vercel.app/player-stats")

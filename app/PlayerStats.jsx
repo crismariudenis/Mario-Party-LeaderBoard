@@ -13,7 +13,7 @@ const PlayerStats = () => {
   const [playerStats, setPlayerStats] = useState([]);
   useEffect(() => {
     // Fetch player statistics from the backend
-    fetch("http://mario-party-leader-board-d4vm.vercel.app/player-stats")
+    fetch("https://mario-party-leader-board-d4vm.vercel.app/player-stats")
       .then((response) => response.json())
       .then((data) => setPlayerStats(data))
       .catch((error) => console.error("Error fetching player stats:", error));

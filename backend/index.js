@@ -44,6 +44,54 @@ app.get("/submissions", async (req, res) => {
   }
 });
 
+app.get("/player-stats", async (req, res) => {
+  try {
+    // Define points for each place
+    const placePoints = {
+      1: 4,
+      2: 2,
+      3: 1,
+      4: 0,
+    };
+
+    // Fetch all submissions
+    const submissions = await Submission.find();
+
+    // Create a dictionary to store player stats
+    const playerStats = {};
+
+    submissions.forEach((submission) => {
+      submission.games.forEach((game) => {
+        const pointsForPlace = placePoints[game.place] || 0;
+
+        game.players.forEach((player) => {
+          if (!playerStats[player]) {
+            playerStats[player] = { totalPoints: 0, gamesPlayed: 0 };
+          }
+
+          // Add place points and bonus to the player's total points
+          playerStats[player].totalPoints += pointsForPlace + game.bonus;
+          playerStats[player].gamesPlayed += 1;
+        });
+      });
+    });
+
+    // Convert stats to an array with averages
+    const statsArray = Object.entries(playerStats).map(([player, stats]) => ({
+      player,
+      totalPoints: stats.totalPoints,
+      gamesPlayed: stats.gamesPlayed,
+      averagePoints:
+        stats.gamesPlayed > 0 ? stats.totalPoints / stats.gamesPlayed : 0,
+    }));
+    statsArray.sort((a, b) => b.averagePoints - a.averagePoints);
+    res.json(statsArray);
+  } catch (error) {
+    console.error("Error fetching player stats:", error);
+    res.status(500).json({ message: "Failed to fetch player stats" });
+  }
+});
+
 // Submit form data
 app.post("/submissions", async (req, res) => {
   try {

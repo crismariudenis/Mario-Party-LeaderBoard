@@ -4,6 +4,7 @@ import { LineChart } from "@mui/x-charts/LineChart";
 import { GlobalStyles, ThemeProvider } from "@mui/material";
 import { createTheme } from "@mui/material";
 import Form from "./Form";
+import PlayerStats from "./PlayerStats";
 const ChartColors = [
   "#4e79a7",
   "#f28e2c",
@@ -16,18 +17,6 @@ const ChartColors = [
   "#9c755f",
   "#bab0ab",
 ];
-const player_colors = {
-  Langa: "#9c755f",
-  Denis: "#76b7b2",
-  Marciuc: "#59a14f",
-  Andrei: "#f28e2c",
-  Ciornei: "#af7aa1",
-  Pinzariu: "#a46dc7",
-  Mihnea: "#4e79a7",
-  Iannis: "#edc949",
-};
-
-const player = {};
 
 const placePoints = {
   1: 4,
@@ -35,41 +24,6 @@ const placePoints = {
   3: 1,
   4: 0,
 };
-
-const dummyData = [
-  {
-    label: "Langa",
-    data: [0, 1, 2, 3],
-  },
-  {
-    label: "Denis",
-    data: [0, 2, 3, 3],
-  },
-  {
-    label: "Marciuc",
-    data: [0, 2, 3, 3],
-  },
-  {
-    label: "Andrei",
-    data: [0, 1, 3, 3],
-  },
-  {
-    label: "Ciornei",
-    data: [0, 1, 4, 4],
-  },
-  {
-    label: "Pinzariu",
-    data: [0, 1, 4, 4],
-  },
-  {
-    label: "Mihnea",
-    data: [0, 1, 4, 4],
-  },
-  {
-    label: "Iannis",
-    data: [0, 1, 4, 4],
-  },
-];
 
 function BasicLineChart() {
   const [chartData, setChartData] = useState({
@@ -234,7 +188,7 @@ export default function Home() {
         <GlobalStyles />
         {isClient && <BasicLineChart />}
       </ThemeProvider>
-
+      <PlayerStats />
       <Form />
     </>
   );
